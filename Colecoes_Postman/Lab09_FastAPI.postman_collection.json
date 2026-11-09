@@ -1,0 +1,149 @@
+{
+  "info": {
+    "_postman_id": "d5ba3b2d-97be-5f64-9e40-3a33adc92f12",
+    "name": "Lab 09 - Livraria - FastAPI",
+    "description": "Exercícios do Laboratório 09 - FastAPI. Executar a API localmente antes dos testes. Rode as requisições na ordem 01 a 05 (reinicie o servidor para restaurar os dados).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "01 - GET listar livros",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "url": "{{baseUrl}}/livros",
+        "method": "GET",
+        "header": []
+      }
+    },
+    {
+      "name": "02 - GET consultar livro 1",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "url": "{{baseUrl}}/livros/1",
+        "method": "GET",
+        "header": []
+      }
+    },
+    {
+      "name": "03 - POST cadastrar livro",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status 201\", function () {",
+              "    pm.response.to.have.status(201);",
+              "});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "url": "{{baseUrl}}/livros",
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"titulo\": \"Padrões de Projeto\",\n  \"autor\": \"Erich Gamma et al.\",\n  \"ano\": 1994\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "04 - PUT atualizar livro 1",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "url": "{{baseUrl}}/livros/1",
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"titulo\": \"Engenharia de Software - Edição Atualizada\",\n  \"autor\": \"Ian Sommerville\",\n  \"ano\": 2019\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        }
+      }
+    },
+    {
+      "name": "05 - DELETE remover livro 2",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "exec": [
+              "pm.test(\"Status 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ]
+          }
+        }
+      ],
+      "request": {
+        "url": "{{baseUrl}}/livros/2",
+        "method": "DELETE",
+        "header": []
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://127.0.0.1:8000"
+    }
+  ]
+}
