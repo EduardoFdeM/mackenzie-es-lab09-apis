@@ -1,0 +1,36 @@
+name: CI/CD Pipeline - Flask Azure Deploy (Lab 9.3 e 9.4)
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '9.1_Flask/**'
+      - '.github/workflows/deploy-flask.yml'
+  workflow_dispatch:
+
+jobs:
+  build-and-test:
+    name: 1. Build e Teste de Sintaxe
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Configurar Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+          cache-dependency-path: '9.1_Flask/requirements.txt'
+
+      - name: Instalar Dependências
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r 9.1_Flask/requirements.txt
+
+      - name: Validar Sintaxe e Importações
+        run: |
+          python -m py_compile 9.1_Flask/app.py
+          python -m py_compile 9.1_Flask/a_hello_world.py
+          python -m py_compile 9.1_Flask/b_api_restful.py
