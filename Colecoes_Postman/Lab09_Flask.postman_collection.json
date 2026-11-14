@@ -143,6 +143,10 @@
   "variable": [
     {
       "key": "baseUrl",
+      "value": "https://lab09-flask-10402800-akepcrafhdakdhf3.brazilsouth-01.azurewebsites.net"
+    },
+    {
+      "key": "baseUrl_local",
       "value": "http://127.0.0.1:5000"
     }
   ]

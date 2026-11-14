@@ -143,6 +143,10 @@
   "variable": [
     {
       "key": "baseUrl",
+      "value": "https://lab09-fastapi-10402800-gchzh3gbdmf3b2cu.brazilsouth-01.azurewebsites.net"
+    },
+    {
+      "key": "baseUrl_local",
       "value": "http://127.0.0.1:8000"
     }
   ]
